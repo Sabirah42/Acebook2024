@@ -1,0 +1,39 @@
+body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100vh;
+    margin: 0;
+    background-color: #F2F3F5;
+    font-family:"lucida grande",tahoma,verdana,arial,sans-serif;
+    font-size: 11px;
+}
+.login-form {
+    grid-column: 2;
+    margin: auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+label, input, button {
+    margin: 5px 0;
+}
+.acebook-title {
+    grid-column: 1;
+    margin: auto;
+}
+.acebook-title h1 {
+    font-size: 42px;
+    color: #1877F2;
+}
+.acebook-title p {
+    font-size: 20px;
+}
+
+.login-form button {
+    font-size: 18px;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #1877F2;
+
+}
