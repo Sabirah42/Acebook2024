@@ -6,16 +6,19 @@
     <link rel="stylesheet" href="/main.css" />
 </head>
 <body>
-<h1>Give Us Your Entire Life</h1>
-<form th:action="@{/user}" method="post" th:object="${user}" class="registration-form">
-    <label for="username"></label>
-    <input type="text" id="username" th:field="*{username}" placeholder="Username" />
-    <br/>
-    <label for="password"></label>
-    <input type="password" id="password" th:field="*{password}" placeholder="Password"/>
-    <br/>
-    <!-- Add more fields as needed -->
-    <button type="submit">Register</button>
-</form>
+<div class="center-container">
+    <div class="registration-form">
+        <h1>Give Us Your Entire Life</h1>
+        <form th:action="@{/user}" method="post" th:object="${user}">
+            <label for="username"></label>
+            <input type="text" id="username" th:field="*{username}" placeholder="Username" />
+            <br/>
+            <label for="password"></label>
+            <input type="password" id="password" th:field="*{password}" placeholder="Password"/>
+            <br/>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+</div>
 </body>
 </html>
