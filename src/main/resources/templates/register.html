@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
+    <link rel="stylesheet" href="/main.css" />
 </head>
 <body>
-<h1>Registration Form</h1>
+<h1>Give Us Your Entire Life</h1>
 <form th:action="@{/user}" method="post" th:object="${user}" class="registration-form">
-    <label for="username">Username:</label>
+    <label for="username"></label>
     <input type="text" id="username" th:field="*{username}" placeholder="Username" />
     <br/>
-    <label for="password">Password:</label>
+    <label for="password"></label>
     <input type="password" id="password" th:field="*{password}" placeholder="Password"/>
     <br/>
     <!-- Add more fields as needed -->
