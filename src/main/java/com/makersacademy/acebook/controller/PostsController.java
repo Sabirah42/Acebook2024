@@ -49,9 +49,9 @@ public class PostsController {
     }
 
     @PostMapping("/posts/{id}")
-    public String deleteIndividualPost(@PathVariable Long id, Model model) {
+    public RedirectView deleteIndividualPost(@PathVariable Long id, Model model) {
         // Delete the post by id
         repository.deleteById(id);
-        return "redirect:/posts/index";
+        return new RedirectView("/posts");
     }
 }
