@@ -31,16 +31,8 @@ public class PostsController {
         return new RedirectView("/posts");
     }
 
-//    @GetMapping("/posts/{id}")
-//    public String individualPost(@PathVariable Long id, Model model) {
-//
-//        Post post = repository.findById(id).orElseThrow(() -> new NoSuchElementException("Post not found"));
-//        model.addAttribute("post", post);
-//        return "posts/individual_post";
-//    }
-
     @GetMapping("/posts/{id}")
-    public String individualPost(@PathVariable Long id, Model model) {
+    public String getIndividualPost(@PathVariable Long id, Model model) {
         // Find the post by id
         Post post = repository.findById(id).orElse(null);
 
@@ -56,5 +48,10 @@ public class PostsController {
         }
     }
 
-
+    @PostMapping("/posts/{id}")
+    public String deleteIndividualPost(@PathVariable Long id, Model model) {
+        // Delete the post by id
+        repository.deleteById(id);
+        return "redirect:/posts/index";
+    }
 }
