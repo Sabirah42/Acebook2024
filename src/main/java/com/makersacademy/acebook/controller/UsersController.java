@@ -22,13 +22,13 @@ public class UsersController {
     @Autowired
     AuthoritiesRepository authoritiesRepository;
 
-    @GetMapping("/users/new")
+    @GetMapping("/user/new")
     public String signup(Model model) {
         model.addAttribute("user", new User());
         return "users/new";
     }
 
-    @PostMapping("/users")
+    @PostMapping("/user")
     public RedirectView signup(@ModelAttribute User user) {
         userRepository.save(user);
         Authority authority = new Authority(user.getUsername(), "ROLE_USER");
@@ -41,5 +41,10 @@ public class UsersController {
         Iterable<User> users = userRepository.findAll();
         model.addAttribute("users", users);
         return "users/all_users";
+    }
+
+    @GetMapping("/register")
+    public String register(){
+        return "register";
     }
 }
