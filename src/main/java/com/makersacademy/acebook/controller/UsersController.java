@@ -44,7 +44,8 @@ public class UsersController {
     }
 
     @GetMapping("/register")
-    public String register(){
+    public String showRegistrationForm(Model model) {
+        model.addAttribute("user", new User()); // Assuming 'User' is your user model
         return "register";
     }
 }
