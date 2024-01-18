@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
+import java.util.NoSuchElementException;
 
 import java.util.List;
 
@@ -28,5 +29,13 @@ public class PostsController {
     public RedirectView create(@ModelAttribute Post post) {
         repository.save(post);
         return new RedirectView("/posts");
+    }
+
+    @GetMapping("/posts/{id}")
+    public String individualPost(@PathVariable Long id, Model model) {
+
+        Post post = repository.findById(id).orElseThrow(() -> new NoSuchElementException("Post not found"));
+        model.addAttribute("post", post);
+        return "posts/individual_post";
     }
 }
