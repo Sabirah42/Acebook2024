@@ -8,13 +8,13 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
-import java.util.List;
-
 @Controller
-public class PostsController {
+public class MyProfileController {
 
     @Autowired
     PostRepository repository;
@@ -22,19 +22,20 @@ public class PostsController {
     @Autowired
     UserRepository uRepository;
 
-    @GetMapping("/posts")
-    public String index(Model model) {
-        Iterable<Post> posts = repository.findAll();
+    @GetMapping("/my_profile")
+    public String index(Model model, @AuthenticationPrincipal UserDetails userDetails) {
+        Long   userId  = uRepository.findByUsername(userDetails.getUsername()).getId();
+        Iterable<Post> posts = repository.findByUserId(userId);
         model.addAttribute("posts", posts);
         model.addAttribute("post", new Post());
-        return "posts/index";
+        return "users/my_profile";
     }
 
-    @PostMapping("/posts")
+    @PostMapping("/my_profile")
     public RedirectView create(@ModelAttribute Post post, @AuthenticationPrincipal UserDetails userDetails) {
         Long   userId  = uRepository.findByUsername(userDetails.getUsername()).getId();
         post.setUserId(userId);
         repository.save(post);
-        return new RedirectView("/posts");
+        return new RedirectView("/my_profile");
     }
 }
