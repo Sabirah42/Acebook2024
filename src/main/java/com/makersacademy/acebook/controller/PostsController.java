@@ -31,11 +31,30 @@ public class PostsController {
         return new RedirectView("/posts");
     }
 
+//    @GetMapping("/posts/{id}")
+//    public String individualPost(@PathVariable Long id, Model model) {
+//
+//        Post post = repository.findById(id).orElseThrow(() -> new NoSuchElementException("Post not found"));
+//        model.addAttribute("post", post);
+//        return "posts/individual_post";
+//    }
+
     @GetMapping("/posts/{id}")
     public String individualPost(@PathVariable Long id, Model model) {
+        // Find the post by id
+        Post post = repository.findById(id).orElse(null);
 
-        Post post = repository.findById(id).orElseThrow(() -> new NoSuchElementException("Post not found"));
-        model.addAttribute("post", post);
-        return "posts/individual_post";
+        // Check if the post is found
+        if (post != null) {
+            // If found, add it to the model and return the view name
+            model.addAttribute("post", post);
+            return "posts/individual_post";
+        } else {
+            // If not found, handle it accordingly (e.g., show an error page or redirect)
+            // For example, you might render a specific error view:
+            return "../static/error/404";
+        }
     }
+
+
 }
