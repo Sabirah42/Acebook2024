@@ -18,8 +18,6 @@ public class Post {
     @Column(name = "content")
     private String content;
 
-    @Column(name = "user_id", insertable = false, updatable = false)
-    private Long userId;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
@@ -29,7 +27,6 @@ public class Post {
 
     public Post(String content, Long userId, User user) {
         this.content = content;
-        this.userId = userId;
         this.user = user;
     }
 
@@ -39,10 +36,6 @@ public class Post {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
     }
 
     public String getContent() {
