@@ -20,7 +20,7 @@
 <h1>RAGE Feed</h1>
 <!--Get username from authority table-->
 <div sec:authorize="isAuthenticated()">
-    Welcome <span class="username" sec:authentication="name"></span>!
+    Welcome <span class="home-username" sec:authentication="name"></span>!
 </div>
 
 <!--Create new post-->

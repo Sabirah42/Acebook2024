@@ -16,9 +16,12 @@
 </div>
 
 <body>
-<h2>Usernames:</h2>
+<h2>Potential Friends or Enemies</h2>
 <ul th:each="user: ${users}">
-    <li class="users" th:text="${user.username}"></li><button>Add friend</button>
+    <li>
+        <span class="users" th:text="${user.username}"></span>
+        <button>Add friend</button>
+    </li>
 </ul>
 </body>
 </html>

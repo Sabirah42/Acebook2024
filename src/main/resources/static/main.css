@@ -123,3 +123,14 @@ li {
     word-wrap: break-word; /* Break and wrap long words onto the next line */
     overflow: hidden; /* Hide any content that exceeds the box's boundaries */
 }
+
+.username {
+    font-size: 50px;
+    color: #1877F2;
+    font-weight: bold;
+}
+
+.home-username {
+    color: #1877F2;
+    font-weight: bold;
+}
