@@ -31,7 +31,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/user-login") //this is the default login page when visiting 8080...
-                .loginProcessingUrl("/user-login")
+                .loginProcessingUrl("/posts")
                 .defaultSuccessUrl("/posts") //when login is successful this is new default url
                 .permitAll()
                 .and()
