@@ -77,8 +77,8 @@ public class PostsController {
     }
     @PostMapping("/posts/{id}/update")
     public RedirectView update(@ModelAttribute Post post, @AuthenticationPrincipal UserDetails userDetails) {
-        Long   userId  = uRepository.findByUsername(userDetails.getUsername()).getId();
-        post.setUserId(userId);
+        User user = uRepository.findByUsername(userDetails.getUsername());
+        post.setUser(user);
         repository.save(post);
         return new RedirectView("/posts");
     }
