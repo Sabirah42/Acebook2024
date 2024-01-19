@@ -41,6 +41,10 @@ public class Post {
         this.id = id;
     }
 
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
     public String getContent() {
         return content;
     }
