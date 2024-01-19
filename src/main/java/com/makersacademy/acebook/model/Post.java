@@ -6,6 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.GenerationType;
 import javax.persistence.Column;
+
 import lombok.Data;
 
 // I added the Column import just to make the code a bit easier to read. Makes it clear where columns in the table are being defined.
@@ -44,15 +45,6 @@ public class Post {
         return content;
     }
 
-    public void setContent(String content) {
-        this.content = content;
-    }
+    public void setContent(String content) {}
 
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
 }
