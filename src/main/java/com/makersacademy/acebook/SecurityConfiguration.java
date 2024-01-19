@@ -40,6 +40,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logoutUrl("/logout") //where to default to when logout function is run
                 .logoutSuccessUrl("/user-login?logout") //when you click logout this is where you are directed
                 .permitAll();
+                //.csrf();
+
 
     }
 

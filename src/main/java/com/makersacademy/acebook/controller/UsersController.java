@@ -33,7 +33,7 @@ public class UsersController {
         userRepository.save(user);
         Authority authority = new Authority(user.getUsername(), "ROLE_USER");
         authoritiesRepository.save(authority);
-        return new RedirectView("/login");
+        return new RedirectView("/user-login");
     }
 
     @GetMapping("/all-users")
@@ -41,5 +41,11 @@ public class UsersController {
         Iterable<User> users = userRepository.findAll();
         model.addAttribute("users", users);
         return "users/all_users";
+    }
+
+    @GetMapping("/register")
+    public String showRegistrationForm(Model model) {
+        model.addAttribute("user", new User()); // Assuming 'User' is your user model
+        return "register";
     }
 }

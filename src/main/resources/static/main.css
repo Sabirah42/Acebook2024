@@ -1,10 +1,38 @@
-.posts-main {
-    border-collapse: collapse;
+body {
+    height: 100vh;
+    margin: 0;
+    background-color: #F2F3F5;
+    font-family: "Lucida Grande", Tahoma, Verdana, Arial, sans-serif;
+    font-size: 14px;
 }
 
-.post-main {
-    border: 1px solid #999;
-    padding: 0.5rem;
-    text-align: left;
-    margin-bottom: 0.5rem;;
+.center-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
+
+.registration-form {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+input {
+    margin-bottom: 10px;
+    padding: 8px;
+    width: 200px;
+
+}
+
+button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
