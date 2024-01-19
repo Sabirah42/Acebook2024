@@ -40,6 +40,10 @@ public class User implements UserDetails {
         this.enabled = enabled;
     }
 
+    public Long getId() {
+        return id;
+    }
+
 
     // methods for the spring sec userDetails class which we need for getting user ids etc. I have no idea how it works...
     @Override
