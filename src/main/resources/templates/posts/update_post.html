@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Post</title>
+</head>
+<body>
+<div sec:authorize="isAuthenticated()">
+    Signed in as <span sec:authentication="name"></span>
+</div>
+
+<form th:action="@{'/posts/' + ${post.id}} + '/update'" th:object="${post}" method="post">
+    <p>Content: <input type="text" th:field="*{content}" /></p>
+    <p><input type="submit" value="Update post" />
+</form>
+</body>
+</html>

@@ -5,12 +5,12 @@
     <title>Individual Post</title>
 </head>
 <body>
-<!--<p th:text="${post.content}"></p>-->
-<!--<p><input type="submit" value="Delete post" /></p>-->
-
 <form th:action="@{'/posts/' + ${post.id}}" th:object="${post}" method="post">
     <p th:text="${post.content}"></p>
-    <p><input type="submit" value="Delete post" /></p>
+    <p><input type="submit" value="Delete Post" /></p>
+
+    <button th:attr="onclick='window.location.href=' + @{'/posts/' + ${post.id} + '/update'}">Update Post</button>
+
 </form>
 </body>
 </html>
