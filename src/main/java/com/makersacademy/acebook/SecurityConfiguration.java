@@ -31,7 +31,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/user-login") //this is the default login page when visiting 8080...
-                .loginProcessingUrl("/posts")
+                .loginProcessingUrl("/login")
                 .defaultSuccessUrl("/posts") //when login is successful this is new default url
                 .permitAll()
                 .and()
@@ -39,6 +39,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logoutUrl("/logout") //where to default to when logout function is run
                 .logoutSuccessUrl("/user-login?logout") //when you click logout this is where you are directed
                 .permitAll();
+                //.csrf();
+
 
     }
 

@@ -25,20 +25,6 @@ public class PostsController {
         return "posts/index";
     }
 
-    @PostMapping("/posts")
-    public RedirectView create(@ModelAttribute Post post) {
-        repository.save(post);
-        return new RedirectView("/posts");
-    }
-
-//    @GetMapping("/posts/{id}")
-//    public String individualPost(@PathVariable Long id, Model model) {
-//
-//        Post post = repository.findById(id).orElseThrow(() -> new NoSuchElementException("Post not found"));
-//        model.addAttribute("post", post);
-//        return "posts/individual_post";
-//    }
-
     @GetMapping("/posts/{id}")
     public String individualPost(@PathVariable Long id, Model model) {
         // Find the post by id
@@ -55,6 +41,22 @@ public class PostsController {
             return "../static/error/404";
         }
     }
+
+    @PostMapping("/posts")
+    public RedirectView create(@ModelAttribute Post post) {
+        repository.save(post);
+        return new RedirectView("/posts");
+    }
+
+//    @GetMapping("/posts/{id}")
+//    public String individualPost(@PathVariable Long id, Model model) {
+//
+//        Post post = repository.findById(id).orElseThrow(() -> new NoSuchElementException("Post not found"));
+//        model.addAttribute("post", post);
+//        return "posts/individual_post";
+//    }
+
+
 
 
 }
