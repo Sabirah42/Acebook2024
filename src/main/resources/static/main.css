@@ -36,3 +36,77 @@ button {
     cursor: pointer;
 }
 
+.topnav .logo {
+    float: left;
+    font-size: 24px; /* Adjusted font size for the logo */
+    padding: 14px 16px; /* Adjusted padding for the logo */
+    text-decoration: none;
+    color: #f2f2f2;
+    font-weight: bold;
+}
+
+.topnav {
+    overflow: hidden;
+    background-color: #1877F2;
+}
+
+.topnav a {
+    float: right;
+    display: block;
+    text-color: white;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.topnav a:hover {
+    background-color: white; /* Background color on hover */
+    color: black;
+    text-decoration: none;/* Text color on hover */
+}
+
+
+
+.like {
+    padding: 10px;
+    background-color: #1877F2;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.like:hover {
+    background-color: blue;
+}
+
+.dislike {
+    padding: 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.dislike:hover{
+    background-color: darkred;
+}
+
+li {
+    width: 500px; /* Set a fixed width for each list item */
+    list-style-type: none; /* Remove default list item styling */
+    margin-bottom: 10px; /* Optional: Add margin between list items */
+}
+
+.rounded-text {
+    width: 100%; /* Take up the full width of the list item */
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+    display: block; /* Ensure the box takes full width within the list item */
+    word-wrap: break-word; /* Break and wrap long words onto the next line */
+    overflow: hidden; /* Hide any content that exceeds the box's boundaries */
+}

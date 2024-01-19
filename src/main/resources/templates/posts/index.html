@@ -6,33 +6,21 @@
     <title>Acebook</title>
     <link rel="stylesheet" href="/main.css" />
 </head>
-<body>
 
 <!--Navigation bar-->
-<nav>
-    <!--Logout button-->
-    <form name="logout" th:action="@{logout}" method="post">
-        <input type="submit" value="Sign Out" />
-    </form>
-
-    <!--    Placeholder buttons-->
-
-    <!--        All users button-->
-    <form name="all_users" th:action="@{/all_users}" method="get">
-        <input type="submit" value="All Users" />
-    </form>
-    <!--Profile button-->
-    <form name="my_profile" th:action="@{/my_profile}" method="get">
-        <input type="submit" value="Profile Page" />
-    </form>
-</nav>
+<div class="topnav">
+    <a class="logo" th:href="@{/posts}">Acebook</a>
+    <a th:href="@{/logout}">Logout</a>
+    <a th:href="@{/all-users}">All Users</a>
+    <a th:href="@{/my_profile}">Profile</a>
+</div>
 
 <!--    Main page-->
-<h1>Acebook</h1>
-<h2>Feed</h2>
+<body>
+<h1>RAGE Feed</h1>
 <!--Get username from authority table-->
 <div sec:authorize="isAuthenticated()">
-    Welcome <span sec:authentication="name"></span>!
+    Welcome <span class="username" sec:authentication="name"></span>!
 </div>
 
 <!--Create new post-->
@@ -43,10 +31,10 @@
 <!--List all posts-->
 <ul th:each="post: ${posts}">
     <li>
-        <span th:text="${post.content}" />
-        <span th:text="${post.user.username}" />
-        <button>Like</button>
-        <button>Dislike</button>
+        <span class="rounded-text" th:text="${post.content}" />
+        @<span th:text="${post.user.username}" />
+        <button class="like">Like</button>
+        <button class="dislike">Dislike</button>
     </li>
 </ul>
 </body>
