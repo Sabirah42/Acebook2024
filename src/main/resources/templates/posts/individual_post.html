@@ -16,11 +16,11 @@
 </div>
 
 <body>
-
 <form th:action="@{'/posts/' + ${post.id}}" th:object="${post}" method="post">
     <p th:text="${post.content}"></p>
-    <p><input type="submit" value="Delete post" /></p>
-</form>
+    <p><input type="submit" value="Delete Post" /></p>
 
+</form>
+<button th:onclick="'window.location.href=\'/posts/' + ${post.id} + '/update\''">Update Post</button>
 </body>
 </html>
