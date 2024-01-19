@@ -1,27 +1,41 @@
 <!DOCTYPE html>
-    <html xmlns:th="http://www.thymeleaf.org"
-          xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5" >
-    <head lang="en">
-        <meta charset="UTF-8"/>
-        <title>Acebook</title>
-        <link rel="stylesheet" href="/main.css" />
-    </head>
-    <body>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5" >
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <title>Acebook</title>
+    <link rel="stylesheet" href="/main.css" />
+</head>
 
-    <h1>Posts</h1>
+<!--Navigation bar-->
+<div class="topnav">
+    <a class="logo" th:href="@{/posts}">Acebook</a>
+    <a th:href="@{/logout}">Logout</a>
+    <a th:href="@{/all-users}">All Users</a>
+    <a th:href="@{/my_profile}">Profile</a>
+</div>
 
-    <div sec:authorize="isAuthenticated()">
-        Signed in as <span sec:authentication="name"></span>
-    </div>
+<!--    Main page-->
+<body>
+<h1>RAGE Feed</h1>
+<!--Get username from authority table-->
+<div sec:authorize="isAuthenticated()">
+    Welcome <span class="home-username" sec:authentication="name"></span>!
+</div>
 
-    <form action="#" th:action="@{/posts}" th:object="${post}" method="post">
-        <p>Content: <input type="text" th:field="*{content}" /></p>
-        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
-    </form>
-
-    <ul th:each="post: ${posts}">
-        <li th:text="${post.content}" />
-    </ul>
-
-    </body>
+<!--Create new post-->
+<form action="#" th:action="@{/posts}" th:object="${post}" method="post">
+    <p>Speak your mind: <input type="text" th:field="*{content}" /></p>
+    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+</form>
+<!--List all posts-->
+<ul th:each="post: ${posts}">
+    <li>
+        <span class="rounded-text" th:text="${post.content}" />
+        @<span th:text="${post.user.username}" />
+        <button class="like">Like</button>
+        <button class="dislike">Dislike</button>
+    </li>
+</ul>
+</body>
 </html>

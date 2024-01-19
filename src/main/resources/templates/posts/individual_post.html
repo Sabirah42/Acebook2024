@@ -1,20 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Individual Post</title>
+    <link rel="stylesheet" href="/main.css" />
 </head>
+<!--Navigation bar-->
+<div class="topnav">
+    <a class="logo" th:href="@{/posts}">Acebook</a>
+    <a th:href="@{/logout}">Logout</a>
+    <a th:href="@{/all-users}">All Users</a>
+    <a th:href="@{/my_profile}">Profile</a>
+</div>
+
 <body>
 <form th:action="@{'/posts/' + ${post.id}}" th:object="${post}" method="post">
     <p th:text="${post.content}"></p>
     <p><input type="submit" value="Delete Post" /></p>
 
 </form>
-<!--<button th:attr="onclick='window.location.href=' + @{'/posts/' + ${post.id} + '/update'}">Update Post</button>-->
 <button th:onclick="'window.location.href=\'/posts/' + ${post.id} + '/update\''">Update Post</button>
-
-<!--<button th:onclick ="|window.location.href='/posts/id=${post.id}/update'|" >Update Post</button>-->
-
-<!--<button th:attr="onclick='window.location.href=' + @{/dynamic-url/{id}(id=${dynamicId})}">Go to Dynamic URL</button>-->
 </body>
 </html>

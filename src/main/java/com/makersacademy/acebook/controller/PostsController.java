@@ -1,6 +1,7 @@
 package com.makersacademy.acebook.controller;
 
 import com.makersacademy.acebook.model.Post;
+import com.makersacademy.acebook.model.User;
 import com.makersacademy.acebook.repository.PostRepository;
 import com.makersacademy.acebook.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,8 +35,8 @@ public class PostsController {
 
     @PostMapping("/posts")
     public RedirectView create(@ModelAttribute Post post, @AuthenticationPrincipal UserDetails userDetails) {
-        Long   userId  = uRepository.findByUsername(userDetails.getUsername()).getId();
-        post.setUserId(userId);
+        User user  = uRepository.findByUsername(userDetails.getUsername());
+        post.setUser(user);
         repository.save(post);
         return new RedirectView("/posts");
     }

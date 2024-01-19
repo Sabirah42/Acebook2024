@@ -1,13 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head lang="en">
     <meta charset="UTF-8">
     <title>All Users</title>
+    <link rel="stylesheet" href="/main.css" />
 </head>
+
+<!--Navigation bar-->
+<div class="topnav">
+    <a class="logo" th:href="@{/posts}">Acebook</a>
+    <a th:href="@{/logout}">Logout</a>
+    <a th:href="@{/all-users}">All Users</a>
+    <a th:href="@{/my_profile}">Profile</a>
+</div>
+
 <body>
-<h2>Usernames:</h2>
+<h2>Potential Friends or Enemies</h2>
 <ul th:each="user: ${users}">
-    <li th:text="${user.username}"></li><button>Add friend</button>
+    <li>
+        <span class="users" th:text="${user.username}"></span>
+        <button>Add friend</button>
+    </li>
 </ul>
 </body>
 </html>

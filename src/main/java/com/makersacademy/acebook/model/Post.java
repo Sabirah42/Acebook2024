@@ -1,11 +1,7 @@
 package com.makersacademy.acebook.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.GenerationType;
-import javax.persistence.Column;
+import javax.persistence.*;
+
 import lombok.Data;
 
 // I added the Column import just to make the code a bit easier to read. Makes it clear where columns in the table are being defined.
@@ -22,14 +18,16 @@ public class Post {
     @Column(name = "content")
     private String content;
 
-    @Column(name = "user_id")
-    private Long userId;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private User user;
 
     public Post() {}
 
-    public Post(String content, Long userId) {
+    public Post(String content, User user) {
         this.content = content;
-        this.userId = userId;
+        this.user = user;
     }
 
     public Long getId() {
@@ -47,12 +45,10 @@ public class Post {
     public void setContent(String content) {
         this.content = content;
     }
-
-    public Long getUserId() {
-        return userId;
+    public User getUser() {
+        return this.user;
     }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 }
