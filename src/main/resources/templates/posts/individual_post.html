@@ -8,9 +8,25 @@
 <!--<p th:text="${post.content}"></p>-->
 <!--<p><input type="submit" value="Delete post" /></p>-->
 
+<!--<form th:action="@{'/posts/' + ${post.id}}" th:object="${post}" method="post">-->
+<!--    <p th:text="${post.content}"></p>-->
+<!--    <p><input type="submit" value="Delete post" /></p>-->
+<!--    <p><input type="submit" value="Edit post" /></p>-->
+<!--</form>-->
 <form th:action="@{'/posts/' + ${post.id}}" th:object="${post}" method="post">
-    <p th:text="${post.content}"></p>
-    <p><input type="submit" value="Delete post" /></p>
+    <input type="hidden" name="_method" th:value="${post.id == null ? 'post' : 'put'}" />
+
+    <p>
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" th:field="*{title}" />
+    </p>
+
+    <p th:if="${post.id == null}" style="color: red;">Please provide a valid post ID.</p>
+
+    <p>
+        <input type="submit" name="action" value="Update post" />
+        <input type="submit" name="action" value="Delete post" onclick="return confirm('Are you sure you want to delete this post?');" />
+    </p>
 </form>
 </body>
 </html>

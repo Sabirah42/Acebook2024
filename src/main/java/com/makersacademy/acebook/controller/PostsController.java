@@ -54,4 +54,23 @@ public class PostsController {
         repository.deleteById(id);
         return new RedirectView("/posts");
     }
+
+//    @PutMapping("/posts/{id}")
+//    public Post updateIndividualPost(@RequestBody Post post, @PathVariable Long id, Model model) {
+//        // Update the post by id
+////        repository.updateById(id);
+//        return repository.updateIndividualPost(post, id);
+//    }
 }
+
+    // Update operation
+//    @PutMapping("/departments/{id}")
+//    public Department
+//    updateDepartment(@RequestBody Department department,
+//                     @PathVariable("id") Long departmentId)
+//    {
+//
+//        return departmentService.updateDepartment(
+//                department, departmentId);
+//    }
+//}
