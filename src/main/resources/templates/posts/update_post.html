@@ -11,7 +11,7 @@
 
 <form th:action="@{'/posts/' + ${post.id}} + '/update'" th:object="${post}" method="post">
     <p>Content: <input type="text" th:field="*{content}" /></p>
-    <p><input type="submit" value="Update post" />
+    <p><input type="submit" value="Submit" />
 </form>
 </body>
 </html>

@@ -9,8 +9,12 @@
     <p th:text="${post.content}"></p>
     <p><input type="submit" value="Delete Post" /></p>
 
-    <button th:attr="onclick='window.location.href=' + @{'/posts/' + ${post.id} + '/update'}">Update Post</button>
-
 </form>
+<!--<button th:attr="onclick='window.location.href=' + @{'/posts/' + ${post.id} + '/update'}">Update Post</button>-->
+<button th:onclick="'window.location.href=\'/posts/' + ${post.id} + '/update\''">Update Post</button>
+
+<!--<button th:onclick ="|window.location.href='/posts/id=${post.id}/update'|" >Update Post</button>-->
+
+<!--<button th:attr="onclick='window.location.href=' + @{/dynamic-url/{id}(id=${dynamicId})}">Go to Dynamic URL</button>-->
 </body>
 </html>
