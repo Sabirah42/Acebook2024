@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Individual Post</title>
+</head>
+<body>
+<!--<p th:text="${post.content}"></p>-->
+<!--<p><input type="submit" value="Delete post" /></p>-->
+
+<form th:action="@{'/posts/' + ${post.id}}" th:object="${post}" method="post">
+    <p th:text="${post.content}"></p>
+    <p><input type="submit" value="Delete post" /></p>
+</form>
+</body>
+</html>

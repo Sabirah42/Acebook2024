@@ -29,7 +29,18 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/posts").hasRole("USER")
                 .antMatchers("/my_profile").hasRole("USER")
                 .antMatchers("/users").permitAll()
-                .and().formLogin();
+                .and()
+                .formLogin()
+                .loginPage("/user-login") //this is the default login page when visiting 8080...
+                .loginProcessingUrl("/login")
+                .defaultSuccessUrl("/posts") //when login is successful this is new default url
+                .permitAll()
+                .and()
+                .logout()
+                .logoutUrl("/logout") //where to default to when logout function is run
+                .logoutSuccessUrl("/user-login?logout") //when you click logout this is where you are directed
+                .permitAll();
+
     }
 
     @Bean
