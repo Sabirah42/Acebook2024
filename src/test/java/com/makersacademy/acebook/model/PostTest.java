@@ -7,7 +7,7 @@ import org.junit.Test;
 
 public class PostTest {
 
-	private Post post = new Post("hello", 1L, new User());
+	private Post post = new Post("hello", 1L);
 
 	@Test
 	public void postHasContent() {
