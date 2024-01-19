@@ -1,27 +1,53 @@
 <!DOCTYPE html>
-    <html xmlns:th="http://www.thymeleaf.org"
-          xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5" >
-    <head lang="en">
-        <meta charset="UTF-8"/>
-        <title>Acebook</title>
-        <link rel="stylesheet" href="/main.css" />
-    </head>
-    <body>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5" >
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <title>Acebook</title>
+    <link rel="stylesheet" href="/main.css" />
+</head>
+<body>
 
-    <h1>Posts</h1>
-
-    <div sec:authorize="isAuthenticated()">
-        Signed in as <span sec:authentication="name"></span>
-    </div>
-
-    <form action="#" th:action="@{/posts}" th:object="${post}" method="post">
-        <p>Content: <input type="text" th:field="*{content}" /></p>
-        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+<!--Navigation bar-->
+<nav>
+    <!--Logout button-->
+    <form name="logout" th:action="@{logout}" method="post">
+        <input type="submit" value="Sign Out" />
     </form>
 
-    <ul th:each="post: ${posts}">
-        <li th:text="${post.content}" />
-    </ul>
+    <!--    Placeholder buttons-->
 
-    </body>
+    <!--        All users button-->
+    <form name="all_users" th:action="@{/all_users}" method="get">
+        <input type="submit" value="All Users" />
+    </form>
+    <!--Profile button-->
+    <form name="my_profile" th:action="@{/my_profile}" method="get">
+        <input type="submit" value="Profile Page" />
+    </form>
+</nav>
+
+<!--    Main page-->
+<h1>Acebook</h1>
+<h2>Feed</h2>
+<!--Check user-->
+<div sec:authorize="isAuthenticated()">
+    Welcome <span sec:authentication="name"></span>!
+</div>
+
+<!--Create new post-->
+<form action="#" th:action="@{/posts}" th:object="${post}" method="post">
+    <p>Speak your mind: <input type="text" th:field="*{content}" /></p>
+    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+</form>
+<!--List all posts-->
+<ul th:each="post: ${posts}">
+    <li>
+        <span th:text="${post.content}" />
+        <span th:text="${post.user.username}" />
+        <button>Like</button>
+        <button>Dislike</button>
+    </li>
+</ul>
+</body>
 </html>
