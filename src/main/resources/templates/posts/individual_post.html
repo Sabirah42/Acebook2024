@@ -5,12 +5,16 @@
     <title>Individual Post</title>
 </head>
 <body>
-<!--<p th:text="${post.content}"></p>-->
-<!--<p><input type="submit" value="Delete post" /></p>-->
-
 <form th:action="@{'/posts/' + ${post.id}}" th:object="${post}" method="post">
     <p th:text="${post.content}"></p>
-    <p><input type="submit" value="Delete post" /></p>
+    <p><input type="submit" value="Delete Post" /></p>
+
 </form>
+<!--<button th:attr="onclick='window.location.href=' + @{'/posts/' + ${post.id} + '/update'}">Update Post</button>-->
+<button th:onclick="'window.location.href=\'/posts/' + ${post.id} + '/update\''">Update Post</button>
+
+<!--<button th:onclick ="|window.location.href='/posts/id=${post.id}/update'|" >Update Post</button>-->
+
+<!--<button th:attr="onclick='window.location.href=' + @{/dynamic-url/{id}(id=${dynamicId})}">Go to Dynamic URL</button>-->
 </body>
 </html>

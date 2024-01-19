@@ -63,4 +63,22 @@ public class PostsController {
         repository.deleteById(id);
         return new RedirectView("/posts");
     }
+
+    @GetMapping("/posts/{id}/update")
+    public String getUpdatePage(@PathVariable Long id, Model model) {
+        Post post = repository.findById(id).orElse(null);
+        if (post != null) {
+            model.addAttribute("post", post);
+            return "posts/update_post";
+        } else {
+            return "../static/error/404";
+        }
+    }
+    @PostMapping("/posts/{id}/update")
+    public RedirectView update(@ModelAttribute Post post, @AuthenticationPrincipal UserDetails userDetails) {
+        Long   userId  = uRepository.findByUsername(userDetails.getUsername()).getId();
+        post.setUserId(userId);
+        repository.save(post);
+        return new RedirectView("/posts");
+    }
 }
