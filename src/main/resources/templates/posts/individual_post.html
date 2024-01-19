@@ -16,12 +16,11 @@
 </div>
 
 <body>
-<!--<p th:text="${post.content}"></p>-->
-<!--<p><input type="submit" value="Delete post" /></p>-->
 
 <form th:action="@{'/posts/' + ${post.id}}" th:object="${post}" method="post">
-    <p class="rounded-text" th:text="${post.content}"></p>
+    <p th:text="${post.content}"></p>
     <p><input type="submit" value="Delete post" /></p>
 </form>
+
 </body>
 </html>

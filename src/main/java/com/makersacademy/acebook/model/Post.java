@@ -25,7 +25,7 @@ public class Post {
 
     public Post() {}
 
-    public Post(String content, Long userId, User user) {
+    public Post(String content, User user) {
         this.content = content;
         this.user = user;
     }

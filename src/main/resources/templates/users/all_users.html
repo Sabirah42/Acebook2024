@@ -17,8 +17,8 @@
 
 <body>
 <h2>Usernames:</h2>
-<ul class="rounded-text" th:each="user: ${users}">
-    <li th:text="${user.username}"></li><button>Add friend</button>
+<ul th:each="user: ${users}">
+    <li class="users" th:text="${user.username}"></li><button>Add friend</button>
 </ul>
 </body>
 </html>

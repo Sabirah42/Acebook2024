@@ -97,11 +97,24 @@ button {
 li {
     width: 500px; /* Set a fixed width for each list item */
     list-style-type: none; /* Remove default list item styling */
-    margin-bottom: 10px; /* Optional: Add margin between list items */
+    margin-bottom: 10px; /* Add margin between list items */
 }
 
 .rounded-text {
     width: 100%; /* Take up the full width of the list item */
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+    display: block; /* Ensure the box takes full width within the list item */
+    word-wrap: break-word; /* Break and wrap long words onto the next line */
+    overflow: hidden; /* Hide any content that exceeds the box's boundaries */
+}
+
+.users {
+    width: 500px; /* Set a fixed width for each list item */
+    list-style-type: none; /* Remove default list item styling */
+    margin-bottom: 10px; /* Add margin between list items */
     padding: 10px;
     border: 2px solid #ccc;
     border-radius: 10px;
