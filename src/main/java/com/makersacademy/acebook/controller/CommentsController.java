@@ -29,8 +29,8 @@ public class CommentsController {
     @Autowired
     CommentRepository cRepository;
 
-    @GetMapping("/posts/{id}")
-    public String getIndividualPost(@PathVariable Long id, Model model) {
+    @GetMapping("/posts/{id}/comment")
+    public String getComments(@PathVariable Long id, Model model) {
         // Find the post by id
         Post post = repository.findById(id).orElse(null);
 
@@ -38,19 +38,33 @@ public class CommentsController {
         if (post != null) {
             // If found, add it to the model and return the view name
             model.addAttribute("post", post);
-            return "posts/individual_post";
+            return "posts/comment";
         } else {
             // If not found, handle it accordingly (e.g., show an error page or redirect)
             // For example, you might render a specific error view:
             return "../static/error/404";
         }
     }
+
     @PostMapping("/posts/{id}/comment")
     public RedirectView addComment(@ModelAttribute Comment comment, @PathVariable Long id) {
         Post post = repository.findById(id).orElse(null);
-        comment.setPost(post);
-        cRepository.save(comment);
-        return new RedirectView("/posts");
+
+        if (post != null) {
+            comment.setPost(post);
+            cRepository.save(comment);
+            return new RedirectView("/posts/" + id); // Redirect to the specific post page
+        } else {
+            // Handle the case where the post is not found
+            return new RedirectView("/error/404"); // You might want to create a specific error page
+        }
     }
+//    @PostMapping("/posts/{id}/comment")
+//    public RedirectView addComment(@ModelAttribute Comment comment, @PathVariable Long id) {
+//        Post post = repository.findById(id).orElse(null);
+//        comment.setPost(post);
+//        cRepository.save(comment);
+//        return new RedirectView("/posts");
+//    }
 
 }
