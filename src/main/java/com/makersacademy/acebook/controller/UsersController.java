@@ -46,21 +46,6 @@ public class UsersController {
         return "users/all_users";
     }
 
-    @PostMapping("/all-users")
-    public String addFriend(Model model, @AuthenticationPrincipal UserDetails userDetails) {
-        User user = userRepository.findByUsername(userDetails.getUsername());
-        friendRepository.save(user.id);
-        return "users/all_users";
-    }
-
-//    @PostMapping("/my_profile")
-//    public RedirectView create(@ModelAttribute Post post, @AuthenticationPrincipal UserDetails userDetails) {
-//        User user  = uRepository.findByUsername(userDetails.getUsername());
-//        post.setUser(user);
-//        repository.save(post);
-//        return new RedirectView("/my_profile");
-//    }
-
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {
         model.addAttribute("user", new User()); // Assuming 'User' is your user model
