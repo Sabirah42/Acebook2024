@@ -31,7 +31,9 @@
 <!--List all posts-->
 <ul th:each="post: ${posts}">
     <li>
+        <a class="post-link" th:href="@{'/posts/' + ${post.id}}">
         <span class="rounded-text" th:text="${post.content}" />
+        </a>
         @<span th:text="${post.user.username}" />
         <button class="like">Like</button>
         <button class="dislike">Dislike</button>

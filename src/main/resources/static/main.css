@@ -134,3 +134,13 @@ li {
     color: #1877F2;
     font-weight: bold;
 }
+
+.post-link a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.post-link a:hover {
+    text-decoration: none;
+    background-color: #f0f0f0;
+}
