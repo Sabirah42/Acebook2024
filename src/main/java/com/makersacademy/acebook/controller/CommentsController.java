@@ -36,8 +36,10 @@ public class CommentsController {
 
         // Check if the post is found
         if (post != null) {
+            Comment comment = new Comment();
             // If found, add it to the model and return the view name
             model.addAttribute("post", post);
+            model.addAttribute("comment", comment);
             return "posts/comment";
         } else {
             // If not found, handle it accordingly (e.g., show an error page or redirect)
