@@ -6,6 +6,8 @@ import com.makersacademy.acebook.model.User;
 import com.makersacademy.acebook.repository.AuthoritiesRepository;
 import com.makersacademy.acebook.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +23,7 @@ public class UsersController {
     UserRepository userRepository;
     @Autowired
     AuthoritiesRepository authoritiesRepository;
+
 
     @GetMapping("/users/new")
     public String signup(Model model) {
@@ -42,6 +45,21 @@ public class UsersController {
         model.addAttribute("users", users);
         return "users/all_users";
     }
+
+    @PostMapping("/all-users")
+    public String addFriend(Model model, @AuthenticationPrincipal UserDetails userDetails) {
+        User user = userRepository.findByUsername(userDetails.getUsername());
+        friendRepository.save(user.id);
+        return "users/all_users";
+    }
+
+//    @PostMapping("/my_profile")
+//    public RedirectView create(@ModelAttribute Post post, @AuthenticationPrincipal UserDetails userDetails) {
+//        User user  = uRepository.findByUsername(userDetails.getUsername());
+//        post.setUser(user);
+//        repository.save(post);
+//        return new RedirectView("/my_profile");
+//    }
 
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {
