@@ -135,12 +135,13 @@ li {
     font-weight: bold;
 }
 
-.post-link a {
+.post-link {
     text-decoration: none;
     color: inherit;
 }
 
-.post-link a:hover {
+.post-link:hover {
     text-decoration: none;
+    color: grey;
     background-color: #f0f0f0;
 }
