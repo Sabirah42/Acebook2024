@@ -21,7 +21,7 @@
     <li>
         <span class="users" th:text="${user.username}"></span>
 
-        <form th:action="@{/friends}" th:object="${user}" method="post">
+        <form th:action="@{/all-users}" th:object="${user}" method="post">
             <input type="hidden" name="id" th:value="${user.id}"/>
             <button type="submit"> Add friend</button>
         </form>
