@@ -4,14 +4,9 @@ import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.GenerationType;
+import javax.persistence.*;
 import java.util.Collection;
 import java.util.Collections;
-import  javax.persistence.Column;
 
 @Data
 @Entity
@@ -25,26 +20,29 @@ public class User implements UserDetails {
     private String password;
     private boolean enabled;
 
-    @Column(name="avatar_id")
-    private Long avatarId;
+    @ManyToOne
+    @JoinColumn(name="avatar_id")
+    private Avatar avatar;
 
 
     public User() {
+
+
         this.enabled = true;
     }
 
     public User(String username, String password, Long avatarId) {
         this.username = username;
         this.password = password;
-        this.avatarId = avatarId;
+        this.avatar = avatar;
         this.enabled = true;
     }
 
-    public User(String username, String password, boolean enabled, Long avatarId) {
+    public User(String username, String password, boolean enabled, Avatar avatar) {
         this.username = username;
         this.password = password;
         this.enabled = enabled;
-        this.avatarId = avatarId;
+        this.avatar = avatar;
     }
 
     public Long getId() {
@@ -88,10 +86,11 @@ public class User implements UserDetails {
         return this.enabled;
     }
 
-    public Long getAvatarId() {
-        return avatarId;
+    public Avatar getAvatar() {
+        return avatar;
     }
-    public void setAvatarId(Long AvatarId) {
-        this.avatarId = avatarId;
+
+    public void setAvatar(Avatar avatar) {
+        this.avatar = avatar;
     }
 }
