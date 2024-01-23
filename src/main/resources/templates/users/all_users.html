@@ -15,13 +15,15 @@
     <a th:href="@{/my_profile}">Profile</a>
 </div>
 
-<body>
-<h2>Potential Friends or Enemies</h2>
-<ul th:each="user: ${users}">
-    <li>
-        <span class="users" th:text="${user.username}"></span>
-        <button>Add friend</button>
-    </li>
-</ul>
-</body>
+<div class="container">
+    <body>
+        <h2>Potential Friends or Enemies</h2>
+        <ul th:each="user: ${users}">
+            <li>
+                <span class="users" th:text="${user.username}"></span>
+                <button>Add friend</button>
+            </li>
+        </ul>
+    </body>
+</div>
 </html>

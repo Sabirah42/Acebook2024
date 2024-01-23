@@ -29,7 +29,7 @@ body {
     text-align: center;
 }
 
-input {
+.big-button {
     margin-bottom: 10px;
     padding: 8px;
     width: 200px;
@@ -88,6 +88,7 @@ button:hover {
     border: none;
     cursor: pointer;
     margin-top: 10px;
+    width: 100px;
 }
 
 .like:hover {
@@ -101,6 +102,7 @@ button:hover {
     border: none;
     cursor: pointer;
     margin-top: 10px;
+    width: 100px;
 }
 
 .dislike:hover{
@@ -167,6 +169,7 @@ li {
     border: none;
     cursor: pointer;
     margin-top: 10px;
+    width: 100px;
 }
 
 .post-button:hover {
