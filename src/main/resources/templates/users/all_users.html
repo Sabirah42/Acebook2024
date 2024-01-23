@@ -23,7 +23,16 @@
 
         <form th:action="@{/all-users}" th:object="${user}" method="post">
             <input type="hidden" name="id" th:value="${user.id}"/>
-            <button type="submit"> Add friend</button>
+            <button id="addFriendButton" onclick="handleButtonClick()" type="submit">Add Friend</button>
+
+            <script th:inline="javascript">
+                /*<![CDATA[*/
+                function handleButtonClick() {
+                    var button = document.getElementById('addFriendButton');
+                    button.innerHTML = /*[[${'Friend Already Added'}]]*/ 'Friend Already Added';
+                    }
+                /*]]>*/
+            </script>
         </form>
     </li>
 </ul>
