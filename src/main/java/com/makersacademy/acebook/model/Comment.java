@@ -13,37 +13,23 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "comment")
-    private String comment;
+    @Column(name = "content")
+    private String content;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+//    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "post_id")
-    private Post post;
+    // Changed from post to postID
+    private Long postId;
 
     public Comment() {}
 
-    public Comment(String comment, Post post) {
-        this.comment = comment;
-        this.post = post;
+    // Changed from post to postID
+    public Comment(String content, Long postId) {
+        this.content = content;
+        // Changed from post to postID
+        this.postId = postId;
     }
-    public Long getId() {
-        return id;
-    }
+    // Deleted all getters and setters, explained that @Data already does this.
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
-
-    public void setPost(Post post) {
-        this.post = post;
-    }
 
 }

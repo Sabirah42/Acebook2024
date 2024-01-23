@@ -11,12 +11,11 @@
         Signed in as <span sec:authentication="name"></span>
     </div>
 
-    <form th:action="@{'/posts/' + ${post.id}}" th:object="${post}" method="post">
-        <p th:text="${post.content}"></p>
+    <p th:text="${post.content}"></p>
 
-    </form>
+
     <form th:action="@{'/posts/' + ${post.id} + '/comment'}" th:object="${comment}" method="post">
-        <p>Add your comment: <input type="text" th:field="*{comment}" /></p>
+        <p>Add your comment: <input type="text" th:field="*{content}" /></p>
         <p><input type="submit" value="Add my comment" /></p>
     </form>
 

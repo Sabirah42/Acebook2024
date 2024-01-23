@@ -53,7 +53,8 @@ public class CommentsController {
         Post post = repository.findById(id).orElse(null);
 
         if (post != null) {
-            comment.setPost(post);
+            // Changes - setPostId - Added the post.getId()
+            comment.setPostId(post.getId());
             cRepository.save(comment);
             return new RedirectView("/posts/" + id); // Redirect to the specific post page
         } else {
@@ -61,12 +62,7 @@ public class CommentsController {
             return new RedirectView("/error/404"); // You might want to create a specific error page
         }
     }
-//    @PostMapping("/posts/{id}/comment")
-//    public RedirectView addComment(@ModelAttribute Comment comment, @PathVariable Long id) {
-//        Post post = repository.findById(id).orElse(null);
-//        comment.setPost(post);
-//        cRepository.save(comment);
-//        return new RedirectView("/posts");
-//    }
+    // Deleted bellow as commented out, not needed code.
+
 
 }
