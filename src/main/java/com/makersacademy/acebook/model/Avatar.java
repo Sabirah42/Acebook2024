@@ -1,13 +1,17 @@
 package com.makersacademy.acebook.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
+@Data
 @Entity
+@Table(name = "avatars")
 public class Avatar {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     @Column(name = "file_name")
     private String fileName;
