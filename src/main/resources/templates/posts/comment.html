@@ -12,6 +12,7 @@
     </div>
 
     <p th:text="${post.content}"></p>
+    <p th:text="${comment.content}"></p>
 
 
     <form th:action="@{'/posts/' + ${post.id} + '/comment'}" th:object="${comment}" method="post">

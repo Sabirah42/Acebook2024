@@ -56,7 +56,7 @@ public class CommentsController {
             // Changes - setPostId - Added the post.getId()
             comment.setPostId(post.getId());
             cRepository.save(comment);
-            return new RedirectView("/posts/" + id); // Redirect to the specific post page
+            return new RedirectView("/posts/{id}/comment"); // Redirect to the same page
         } else {
             // Handle the case where the post is not found
             return new RedirectView("/error/404"); // You might want to create a specific error page
