@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ConnectionController {
@@ -31,7 +32,10 @@ public class ConnectionController {
         User user  = userRepository.findByUsername(userDetails.getUsername());
 //        Here, we are assigning a User object to the user variable so we can access its id later
         Connection newConnection = new Connection(user.getId(), friend.getId());
-//        Here, we are creating a new Connection object using the Model structure of user_id and friend_id
+//        System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXX");
+//        System.out.println(newConnection.getFriendId());
+//        System.out.println(newConnection.getUserId());
+        //        Here, we are creating a new Connection object using the Model structure of user_id and friend_id
         connectionRepository.save(newConnection);
 //        Then we save this to the Connections database
         return "users/all_users";

@@ -20,7 +20,11 @@
 <ul th:each="user: ${users}">
     <li>
         <span class="users" th:text="${user.username}"></span>
-        <button>Add friend</button>
+
+        <form th:action="@{/friends}" th:object="${user}" method="post">
+            <input type="hidden" name="id" th:value="${user.id}"/>
+            <button type="submit"> Add friend</button>
+        </form>
     </li>
 </ul>
 </body>
