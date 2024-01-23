@@ -87,6 +87,7 @@ button:hover {
     background-color: blue;
 }
 
+
 .dislike {
     padding: 10px;
     background-color: red;
@@ -118,6 +119,19 @@ li {
     display: block; /* Ensure the box takes full width within the list item */
     word-wrap: break-word; /* Break and wrap long words onto the next line */
     overflow: hidden; /* Hide any content that exceeds the box's boundaries */
+}
+
+.users {
+    width: 150px; /* Take up the full width of the list item */
+    background-color: white;
+    padding: 10px;
+    border: 2px solid #ccc;
+    box-shadow: 2px 2px 2px 1px #D3D3D3;
+    border-radius: 10px;
+    box-sizing: border-box;
+    display: block; /* Ensure the box takes full width within the list item */
+    word-wrap: break-word; /* Break and wrap long words onto the next line */
+    overflow: hidden;
 }
 
 .username {
@@ -164,3 +178,5 @@ li {
     padding: 10px;
 
 }
+
+
