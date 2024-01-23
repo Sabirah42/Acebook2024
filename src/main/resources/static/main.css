@@ -29,19 +29,13 @@ body {
     text-align: center;
 }
 
-.big-button {
-    margin-bottom: 10px;
-    padding: 8px;
-    width: 200px;
-
-}
-
 button {
     padding: 10px;
     background-color: #4CAF50;
     color: white;
     border: none;
     cursor: pointer;
+    width: 100px;
 }
 
 button:hover {
@@ -79,8 +73,6 @@ button:hover {
     text-decoration: none;/* Text color on hover */
 }
 
-
-
 .like {
     padding: 10px;
     background-color: #1877F2;
@@ -116,23 +108,11 @@ li {
 }
 
 .rounded-text {
-    width: 100%; /* Take up the full width of the list item */
+    width: 400px; /* Take up the full width of the list item */
     background-color: white;
     padding: 10px;
     border: 2px solid #ccc;
-    border-radius: 10px;
-    box-sizing: border-box;
-    display: block; /* Ensure the box takes full width within the list item */
-    word-wrap: break-word; /* Break and wrap long words onto the next line */
-    overflow: hidden; /* Hide any content that exceeds the box's boundaries */
-}
-
-.users {
-    width: 500px; /* Set a fixed width for each list item */
-    list-style-type: none; /* Remove default list item styling */
-    margin-bottom: 10px; /* Add margin between list items */
-    padding: 10px;
-    border: 2px solid #ccc;
+    box-shadow: 2px 2px 2px 1px #D3D3D3;
     border-radius: 10px;
     box-sizing: border-box;
     display: block; /* Ensure the box takes full width within the list item */
@@ -174,4 +154,13 @@ li {
 
 .post-button:hover {
     background-color: #449d48;
+}
+
+.large-input {
+    width: 400px;
+    height: 30px;
+    border-radius: 10px;
+    border: 2px solid #ccc;
+    padding: 10px;
+
 }

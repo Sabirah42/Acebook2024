@@ -17,6 +17,7 @@
 
     <div class="container">
         <body>
+        <h1>Post</h1>
         <form th:action="@{'/posts/' + ${post.id}}" th:object="${post}" method="post">
             <p class="rounded-text" th:text="${post.content}"></p>
             @<span th:text="${post.user.username}" />

@@ -20,7 +20,7 @@
         <h2>Potential Friends or Enemies</h2>
         <ul th:each="user: ${users}">
             <li>
-                <span class="users" th:text="${user.username}"></span>
+                <span class="rounded-text" th:text="${user.username}"></span>
                 <button>Add friend</button>
             </li>
         </ul>
