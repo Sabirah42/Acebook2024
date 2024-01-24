@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,6 +28,13 @@ public class ConnectionController {
 //    @GetMapping
 //    public Iterable<Friend> getAllFriends() {
 //        return friendRepository.findAll();
+//    }
+
+//    @GetMapping("/all-users")
+//    public String getAllUsers(Model model) {
+//        Iterable<User> users = userRepository.findAll();
+//        model.addAttribute("users", users);
+//        return "users/all_users";
 //    }
 
     @PostMapping("/all-users")
