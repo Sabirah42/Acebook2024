@@ -6,7 +6,6 @@
     <title>Acebook</title>
     <link rel="stylesheet" href="/main.css" />
 </head>
-
 <!--Navigation bar-->
 <div class="topnav">
     <a class="logo" th:href="@{/posts}">Acebook</a>
@@ -32,6 +31,9 @@
 <ul th:each="post: ${posts}">
     <li>
         <span class="rounded-text" th:text="${post.content}" />
+        <div th:if="${post.user.avatar != null}" class="avatar">
+            <img th:src="'/' + ${post.user.avatar.getFilePath()}" alt="avatar" style="max-width: 20px; max-height: 20px;">
+        </div>
         @<span th:text="${post.user.username}" />
         <button class="like">Like</button>
         <button class="dislike">Dislike</button>

@@ -31,7 +31,7 @@ public class User implements UserDetails {
         this.enabled = true;
     }
 
-    public User(String username, String password, Long avatarId) {
+    public User(String username, String password, Long avatarId, Avatar avatar) {
         this.username = username;
         this.password = password;
         this.avatar = avatar;
