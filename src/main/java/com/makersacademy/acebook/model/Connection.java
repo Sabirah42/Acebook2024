@@ -11,20 +11,24 @@ public class Connection {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long user_id;
-    private Long friend_id;
+    @Column(name = "user_id")
+    private Long userId;
 
-    public Connection(Long user_id, Long friend_id) {
-        this.user_id = user_id;
-        this.friend_id = friend_id;
+    @Column(name = "friend_id")
+    private Long friendId;
+
+    public Connection() {}
+    public Connection(Long userId, Long friendId) {
+        this.userId = userId;
+        this.friendId = friendId;
     }
 
     public Long getUserId() {
-        return user_id;
+        return userId;
     }
 
     public Long getFriendId() {
-        return friend_id;
+        return friendId;
     }
 
 }

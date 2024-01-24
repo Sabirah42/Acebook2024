@@ -31,5 +31,10 @@
     <li class="users" th:text="${post.content}" />
 </ul>
 
+<h2>My Friends <3</h2>
+<ul th:each="friend: ${friends}">
+    <li class="users" th:text="${friend.getUsername()}" />
+</ul>
+
 </body>
 </html>
