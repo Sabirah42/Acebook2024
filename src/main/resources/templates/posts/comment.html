@@ -12,13 +12,18 @@
     </div>
 
     <p th:text="${post.content}"></p>
-    <p th:text="${comment.content}"></p>
 
 
     <form th:action="@{'/posts/' + ${post.id} + '/comment'}" th:object="${comment}" method="post">
         <p>Add your comment: <input type="text" th:field="*{content}" /></p>
         <p><input type="submit" value="Add my comment" /></p>
     </form>
+
+    <ul th:each="comment: ${comments}">
+        <li>
+            <span class="rounded-text" th:text="${comment.content}"></span>
+        </li>
+    </ul>
 
 </body>
 </html>

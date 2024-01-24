@@ -36,6 +36,8 @@ public class CommentsController {
 
         // Check if the post is found
         if (post != null) {
+            Iterable<Comment> comments = cRepository.findByPostId(id);
+            model.addAttribute("comments", comments);
             // If found, add it to the model and return the view name
             model.addAttribute("post", post);
             model.addAttribute("comment", new Comment());
@@ -63,6 +65,8 @@ public class CommentsController {
 //        }
 //    }
 
+
+    // Create function in spring boot creates a new object
     @PostMapping("/posts/{id}/comment")
     public RedirectView create(@ModelAttribute Comment comment, @PathVariable Long id) {
         Post post = repository.findById(id).orElse(null);
