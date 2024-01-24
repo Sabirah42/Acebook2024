@@ -29,7 +29,7 @@ public class ConnectionController {
 //    }
 
     @PostMapping("/all-users")
-    public ResponseEntity<String> addFriend(@ModelAttribute User friend, @AuthenticationPrincipal UserDetails userDetails) {
+    public RedirectView addFriend(@ModelAttribute User friend, @AuthenticationPrincipal UserDetails userDetails) {
 //        addFriend passes in a User object, which is the person a friend request has been sent TO
         User user  = userRepository.findByUsername(userDetails.getUsername());
 //        Here, we are assigning a User object to the user variable so we can access its id later
@@ -40,6 +40,6 @@ public class ConnectionController {
         //        Here, we are creating a new Connection object using the Model structure of user_id and friend_id
         connectionRepository.save(newConnection);
 //        Then we save this to the Connections database
-        return ResponseEntity.ok("Friend Added!"); // MIGHT NEED TO CHANGE
+        return new RedirectView("/my_profile");
     }
 }
