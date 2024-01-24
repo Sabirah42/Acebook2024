@@ -16,7 +16,9 @@
 
 <!--    Main page-->
 <body>
+<div class="container">
 <h1>RAGE Feed</h1>
+
 <!--Get username from authority table-->
 <div sec:authorize="isAuthenticated()">
     Welcome <span class="home-username" sec:authentication="name"></span>!
@@ -24,20 +26,26 @@
 
 <!--Create new post-->
 <form action="#" th:action="@{/posts}" th:object="${post}" method="post">
-    <p>Speak your mind: <input type="text" th:field="*{content}" /></p>
-    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    <p><input class="large-input" type="text" th:field="*{content}" placeholder="Speak your mind"/></p>
+    <p><input class="post-button" type="submit" value="Submit" /> <input class="post-button" type="reset" value="Reset" /></p>
 </form>
 <!--List all posts-->
 <ul th:each="post: ${posts}">
     <li>
+        <a class="post-link" th:href="@{'/posts/' + ${post.id}}">
         <span class="rounded-text" th:text="${post.content}" />
+        </a>
         <div th:if="${post.user.avatar != null}" class="avatar">
             <img th:src="'/' + ${post.user.avatar.getFilePath()}" alt="avatar" style="max-width: 20px; max-height: 20px;">
         </div>
+
         @<span th:text="${post.user.username}" />
         <button class="like">Like</button>
         <button class="dislike">Dislike</button>
+
+        <button th:object="${post}" th:onclick="'window.location.href=\'/posts/' + ${post.id} + '/comment\''">Comment</button>
     </li>
 </ul>
+</div>
 </body>
 </html>

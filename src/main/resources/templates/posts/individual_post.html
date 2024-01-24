@@ -15,12 +15,16 @@
     <a th:href="@{/my_profile}">Profile</a>
 </div>
 
-<body>
-<form th:action="@{'/posts/' + ${post.id}}" th:object="${post}" method="post">
-    <p th:text="${post.content}"></p>
-    <p><input type="submit" value="Delete Post" /></p>
+    <div class="container">
+        <body>
+        <h1>Post</h1>
+        <form th:action="@{'/posts/' + ${post.id}}" th:object="${post}" method="post">
+            <p class="rounded-text" th:text="${post.content}"></p>
+            @<span th:text="${post.user.username}" />
+            <p><input class="post-button" type="submit" value="Delete Post" /></p>
+        </form>
+        <button th:onclick="'window.location.href=\'/posts/' + ${post.id} + '/update\''">Update Post</button>
+        </body>
+    </div>
 
-</form>
-<button th:onclick="'window.location.href=\'/posts/' + ${post.id} + '/update\''">Update Post</button>
-</body>
 </html>

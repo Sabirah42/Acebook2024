@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Comment</title>
+    <link rel="stylesheet" href="/main.css" />
+</head>
+<body>
+    <div sec:authorize="isAuthenticated()">
+        Signed in as <span sec:authentication="name"></span>
+    </div>
+
+    <p th:text="${post.content}"></p>
+
+
+    <form th:action="@{'/posts/' + ${post.id} + '/comment'}" th:object="${comment}" method="post">
+        <p>Add your comment: <input type="text" th:field="*{content}" /></p>
+        <p><input type="submit" value="Add my comment" /></p>
+    </form>
+
+</body>
+</html>
