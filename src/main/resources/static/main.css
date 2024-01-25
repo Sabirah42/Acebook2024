@@ -12,6 +12,7 @@ body {
     margin: 0 auto;
     padding: 20px;
     background: white;
+    height: 100%;
 }
 
 .center-container {
@@ -135,7 +136,7 @@ li {
 }
 
 .username {
-    font-size: 50px;
+    font-size: 45px;
     color: #1877F2;
     font-weight: bold;
 }
