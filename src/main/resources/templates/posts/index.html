@@ -32,16 +32,13 @@
 <!--List all posts-->
 <ul th:each="post: ${posts}">
     <li>
-        @<span th:text="${post.user.username}" />
-        <p><a class="post-link" th:href="@{'/posts/' + ${post.id}}">
+        <p>@<span th:text="${post.user.username}" /></p>
+        <div th:if="${post.user.avatar != null}" class="avatar">
+            <img class="avatar" th:src="'/' + ${post.user.avatar.getFilePath()}" alt="avatar">
+        </div>
+        <a class="post-link" th:href="@{'/posts/' + ${post.id}}">
         <span class="rounded-text" th:text="${post.content}" />
         </a>
-
-        <div th:if="${post.user.avatar != null}" class="avatar">
-            <img th:src="'/' + ${post.user.avatar.getFilePath()}" alt="avatar" style="max-width: 20px; max-height: 20px;">
-        </div>
-
-        @<span th:text="${post.user.username}" />
         <button class="like">Like</button>
         <button class="dislike">Dislike</button>
 

@@ -29,10 +29,12 @@
 
 <h2>My Thoughts</h2>
 <ul th:each="post: ${posts}">
+    <li>
     <div th:if="${avatar != null}" class="avatar">
-        <img th:src="'/' + ${avatar.getFilePath()}" alt="avatar" style="max-width: 20px; max-height: 20px;">
+        <img class="avatar" th:src="'/' + ${avatar.getFilePath()}" alt="avatar">
     </div>
-    <li class="rounded-text" th:text="${post.content}" />
+    <span class="rounded-text" th:text="${post.content}" />
+    </li>
 </ul>
 
     </body>
