@@ -11,11 +11,10 @@
         <h1>Give Us Your Entire Life</h1>
         <form th:action="@{/users}" method="post" th:object="${user}">
             <label for="username"></label>
-            <input type="text" id="username" th:field="*{username}" placeholder="Username" />
-            <br/>
+            <p><input class="register-input" type="text" id="username" th:field="*{username}" placeholder="Username" /></p>
             <label for="password"></label>
-            <input type="password" id="password" th:field="*{password}" placeholder="Password"/>
-            <br/>
+            <p><input class="register-input" type="password" id="password" th:field="*{password}" placeholder="Password"/>
+            </p>
             <button type="submit">Register</button>
         </form>
     </div>
