@@ -10,7 +10,7 @@
 <div class="topnav">
     <a class="logo" th:href="@{/posts}">Acebook</a>
     <a th:href="@{/logout}">Logout</a>
-    <a th:href="@{/all-users}">All Users</a>
+    <a th:href="@{/all-users}">People</a>
     <a th:href="@{/my_profile}">Profile</a>
 </div>
 
@@ -32,9 +32,11 @@
 <!--List all posts-->
 <ul th:each="post: ${posts}">
     <li>
-        <a class="post-link" th:href="@{'/posts/' + ${post.id}}">
+        @<span th:text="${post.user.username}" />
+        <p><a class="post-link" th:href="@{'/posts/' + ${post.id}}">
         <span class="rounded-text" th:text="${post.content}" />
         </a>
+
         <div th:if="${post.user.avatar != null}" class="avatar">
             <img th:src="'/' + ${post.user.avatar.getFilePath()}" alt="avatar" style="max-width: 20px; max-height: 20px;">
         </div>
@@ -46,6 +48,7 @@
         <button th:object="${post}" th:onclick="'window.location.href=\'/posts/' + ${post.id} + '/comment\''">Comment</button>
     </li>
 </ul>
+
 </div>
 </body>
 </html>
