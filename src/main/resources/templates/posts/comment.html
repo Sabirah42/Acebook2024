@@ -28,6 +28,14 @@
         <p><input class="large-input" type="text" th:field="*{content}" placeholder="Add your comment" /></p>
         <p><input class="post-button" type="submit" value="Add comment" /></p>
     </form>
+
+    <ul th:each="comment: ${comments}">
+        <li>
+            <span class="rounded-text" th:text="${comment.content}"></span>
+        </li>
+    </ul>
+  
 </div>
+
 </body>
 </html>

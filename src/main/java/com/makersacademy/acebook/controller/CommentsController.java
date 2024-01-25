@@ -36,10 +36,11 @@ public class CommentsController {
 
         // Check if the post is found
         if (post != null) {
-            Comment comment = new Comment();
+            Iterable<Comment> comments = cRepository.findByPostId(id);
+            model.addAttribute("comments", comments);
             // If found, add it to the model and return the view name
             model.addAttribute("post", post);
-            model.addAttribute("comment", comment);
+            model.addAttribute("comment", new Comment());
             return "posts/comment";
         } else {
             // If not found, handle it accordingly (e.g., show an error page or redirect)
@@ -48,21 +49,38 @@ public class CommentsController {
         }
     }
 
+//    @PostMapping("/posts/{id}/comment")
+//    public RedirectView addComment(@ModelAttribute Comment comment, @PathVariable Long id) {
+//        Post post = repository.findById(id).orElse(null);
+//
+//        if (post != null) {
+//            Comment newComment = new Comment(); // Creates new comment object
+//            newComment.setContent(comment.getContent()); // Sets content to newComment
+//            newComment.setPostId(post.getId()); // Sets Post ID to newComment
+//            cRepository.save(newComment); //Saves newComment object to database
+//            return new RedirectView("/posts/{id}/comment"); // Redirect to the same page
+//        } else {
+//            // Handle the case where the post is not found
+//            return new RedirectView("/error/404"); // You might want to create a specific error page
+//        }
+//    }
+
+
+    // Create function in spring boot creates a new object
     @PostMapping("/posts/{id}/comment")
-    public RedirectView addComment(@ModelAttribute Comment comment, @PathVariable Long id) {
+    public RedirectView create(@ModelAttribute Comment comment, @PathVariable Long id) {
         Post post = repository.findById(id).orElse(null);
 
         if (post != null) {
-            // Changes - setPostId - Added the post.getId()
-            comment.setPostId(post.getId());
-            cRepository.save(comment);
-            return new RedirectView("/posts/" + id); // Redirect to the specific post page
+            // Print statement to check default comment ID
+            System.out.println(comment.getId()); //comment ID was same as Post ID previously
+            comment.setId(null); // Sets comment ID to null
+            comment.setPostId(post.getId()); // Set post ID to comment
+            cRepository.save(comment); // Save comment object with correctly assigned comment ID and post ID
+            return new RedirectView("/posts/{id}/comment"); // Redirect to the same page
         } else {
             // Handle the case where the post is not found
-            return new RedirectView("/error/404"); // You might want to create a specific error page
+            return new RedirectView("/error/404");
         }
     }
-    // Deleted bellow as commented out, not needed code.
-
-
 }
