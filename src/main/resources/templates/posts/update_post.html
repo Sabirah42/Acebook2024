@@ -2,19 +2,29 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head lang="en">
-<head>
     <meta charset="UTF-8">
     <title>Update Post</title>
     <link rel="stylesheet" href="/main.css" />
 </head>
-<body>
-<div sec:authorize="isAuthenticated()">
-    Signed in as <span sec:authentication="name"></span>
+<!--Navigation bar-->
+<div class="topnav">
+    <a class="logo" th:href="@{/posts}">Acebook</a>
+    <a th:href="@{/logout}">Logout</a>
+    <a th:href="@{/all-users}">People</a>
+    <a th:href="@{/my_profile}">Profile</a>
 </div>
 
-<form th:action="@{'/posts/' + ${post.id}} + '/update'" th:object="${post}" method="post">
-    <p>Content: <input type="text" th:field="*{content}" /></p>
-    <p><input type="submit" value="Submit" />
-</form>
-</body>
+<div class="container">
+    <body>
+    <div sec:authorize="isAuthenticated()">
+        Signed in as <span sec:authentication="name"></span>
+    </div>
+
+    <form th:action="@{'/posts/' + ${post.id}} + '/update'" th:object="${post}" method="post">
+        <p>Content: <input type="text" th:field="*{content}" /></p>
+        <input class="post-button" type="submit" value="Submit" />
+    </form>
+    </body>
+</div>
+
 </html>

@@ -6,17 +6,27 @@
     <title>Comment</title>
     <link rel="stylesheet" href="/main.css" />
 </head>
+
+<!--Navigation bar-->
+<div class="topnav">
+    <a class="logo" th:href="@{/posts}">Acebook</a>
+    <a th:href="@{/logout}">Logout</a>
+    <a th:href="@{/all-users}">All Users</a>
+    <a th:href="@{/my_profile}">Profile</a>
+</div>
+
 <body>
+<div class="container">
     <div sec:authorize="isAuthenticated()">
-        Signed in as <span sec:authentication="name"></span>
+        Signed in as <span class="home-username" sec:authentication="name"></span>
     </div>
 
-    <p th:text="${post.content}"></p>
+    <p class="rounded-text" th:text="${post.content}"></p>
 
 
     <form th:action="@{'/posts/' + ${post.id} + '/comment'}" th:object="${comment}" method="post">
-        <p>Add your comment: <input type="text" th:field="*{content}" /></p>
-        <p><input type="submit" value="Add my comment" /></p>
+        <p><input class="large-input" type="text" th:field="*{content}" placeholder="Add your comment" /></p>
+        <p><input class="post-button" type="submit" value="Add comment" /></p>
     </form>
 
     <ul th:each="comment: ${comments}">
@@ -24,6 +34,8 @@
             <span class="rounded-text" th:text="${comment.content}"></span>
         </li>
     </ul>
+  
+</div>
 
 </body>
 </html>

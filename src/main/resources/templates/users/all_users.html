@@ -11,17 +11,19 @@
 <div class="topnav">
     <a class="logo" th:href="@{/posts}">Acebook</a>
     <a th:href="@{/logout}">Logout</a>
-    <a th:href="@{/all-users}">All Users</a>
+    <a th:href="@{/all-users}">People</a>
     <a th:href="@{/my_profile}">Profile</a>
 </div>
 
-<body>
-<h2>Potential Friends or Enemies</h2>
-<ul th:each="user: ${users}">
-    <li>
-        <span class="users" th:text="${user.username}"></span>
-        <button>Add friend</button>
-    </li>
-</ul>
-</body>
+<div class="container">
+    <body>
+        <h2>Potential Friends or Enemies</h2>
+        <ul th:each="user: ${users}">
+            <li>
+                <span class="users" th:text="${user.username}"></span>
+                <p><button>Add friend</button></p>
+            </li>
+        </ul>
+    </body>
+</div>
 </html>

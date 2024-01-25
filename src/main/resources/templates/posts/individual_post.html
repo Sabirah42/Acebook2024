@@ -11,16 +11,21 @@
 <div class="topnav">
     <a class="logo" th:href="@{/posts}">Acebook</a>
     <a th:href="@{/logout}">Logout</a>
-    <a th:href="@{/all-users}">All Users</a>
+    <a th:href="@{/all-users}">People</a>
     <a th:href="@{/my_profile}">Profile</a>
 </div>
 
-<body>
-<form th:action="@{'/posts/' + ${post.id}}" th:object="${post}" method="post">
-    <p th:text="${post.content}"></p>
-    <p><input type="submit" value="Delete Post" /></p>
+    <div class="container">
+        <body>
+        <h1>Post</h1>
+        <form th:action="@{'/posts/' + ${post.id}}" th:object="${post}" method="post">
+            <p>@<span th:text="${post.user.username}" /></p>
+            <p class="rounded-text" th:text="${post.content}"></p>
 
-</form>
-<button th:onclick="'window.location.href=\'/posts/' + ${post.id} + '/update\''">Update Post</button>
-</body>
+            <p><input class="post-button" type="submit" value="Delete Post" /></p>
+        </form>
+        <button th:onclick="'window.location.href=\'/posts/' + ${post.id} + '/update\''">Update Post</button>
+        </body>
+    </div>
+
 </html>

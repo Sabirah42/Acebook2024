@@ -11,25 +11,30 @@
 <div class="topnav">
     <a class="logo" th:href="@{/posts}">Acebook</a>
     <a th:href="@{/logout}">Logout</a>
-    <a th:href="@{/all-users}">All Users</a>
+    <a th:href="@{/all-users}">People</a>
     <a th:href="@{/my_profile}">Profile</a>
 </div>
 
-<body>
-<div sec:authorize="isAuthenticated()">
-    <span class="username" sec:authentication="name"></span>
-</div>
+<div class="container">
+    <body>
+        <div sec:authorize="isAuthenticated()">
+            <span class="username" sec:authentication="name"></span>
+        </div>
 
-<h2>Create a post</h2>
-<form action="#" th:action="@{/my_profile}" th:object="${post}" method="post">
-    <p>Speak your mind: <input type="text" th:field="*{content}" /></p>
-    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
-</form>
+        <h2>Create a post</h2>
+        <form action="#" th:action="@{/my_profile}" th:object="${post}" method="post">
+            <p><input class="large-input" type="text" th:field="*{content}" placeholder="Speak your mind" /></p>
+            <p><input class="post-button" type="submit" value="Submit" /> <input class="post-button" type="reset" value="Reset" /></p>
+        </form>
 
 <h2>My Thoughts</h2>
 <ul th:each="post: ${posts}">
-    <li class="users" th:text="${post.content}" />
+    <div th:if="${avatar != null}" class="avatar">
+        <img th:src="'/' + ${avatar.getFilePath()}" alt="avatar" style="max-width: 20px; max-height: 20px;">
+    </div>
+    <li class="rounded-text" th:text="${post.content}" />
 </ul>
 
-</body>
+    </body>
+</div>
 </html>
