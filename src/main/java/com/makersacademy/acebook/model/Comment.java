@@ -16,7 +16,7 @@ public class Comment {
     @Column(name = "content")
     private String content;
 
-//    @ManyToOne(cascade = CascadeType.ALL)
+//    @ManyToOne
     @JoinColumn(name = "post_id")
     // Changed from post to postID
     private Long postId;

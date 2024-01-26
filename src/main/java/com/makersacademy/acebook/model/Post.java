@@ -18,9 +18,8 @@ public class Post {
     @Column(name = "content")
     private String content;
 
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
+    @ManyToOne // (cascade = CascadeType.ALL) -> causing issues with delete button
+    @JoinColumn(name = "user_id") // cascade tried to delete users as well when deleting posts
     private User user;
 
     public Post() {}
